@@ -14,14 +14,12 @@ import static org.infra.BaseTest.driver;
 public class ResultPage {
 
 
-    public static void scrollToAndSelectSpecificCheckbox() throws Exception {
+    public static void scrollToAndSelectApartmentCheckbox() throws Exception {
         JavascriptExecutor js;
         js = (JavascriptExecutor) driver;
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
-        // Find the label for "Apartments" and get its 'for' attribute to locate the checkbox
         WebElement labelForApartments = driver.findElement(By.xpath("//div[contains(text(), 'Apartments')]/ancestor::label"));
-        // Use the 'for' attribute value to find the corresponding checkbox
-       WebElement checkbox = driver.findElement(By.xpath("//div[text()='Apartments']/ancestor::div[@data-testid='filters-group-label-container']"));
+        WebElement checkbox = driver.findElement(By.xpath("//div[text()='Apartments']/ancestor::div[@data-testid='filters-group-label-container']"));
 
         // Scroll the checkbox into view
         js.executeScript("arguments[0].scrollIntoView(true);",  checkbox);

@@ -3,12 +3,13 @@ package org.auttomation.tests;
 import org.infra.BaseTest;
 import org.infra.pages.HomePage;
 import org.infra.pages.ResultPage;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
 public class LoginTest {
 
-    @Test (priority = 1)
-    public void setTheRequiredBookingDetails()  {
+    @Test(priority = 1)
+    public void setTheRequiredBookingDetails() {
         BaseTest.setupBrowser();
         HomePage.closeTheLoginPopupIfExist();
         HomePage.fillDestinationField();
@@ -17,10 +18,15 @@ public class LoginTest {
         HomePage.clickOnSearchBtn();
     }
 
-    @Test (priority = 2)
-    public void filterTheResultByApartment() throws Exception{
-        ResultPage.scrollToAndSelectSpecificCheckbox();
+    @Test(priority = 2)
+    public void filterTheResultByApartment() throws Exception {
+        ResultPage.scrollToAndSelectApartmentCheckbox();
         ResultPage.reviewTheApartments();
+    }
+
+    @AfterClass
+    public void endTest() {
+        BaseTest.closeBrowser();
     }
 
 }
